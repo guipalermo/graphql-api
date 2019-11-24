@@ -2,13 +2,37 @@ type User {
     id: ID!
     name: String!
     email: String!
+    phone: String
+    age: Int
+}
+
+type Plan {
+    id: ID!
+    slug: String!
+    price: Float
+}
+
+type Subscription {
+    id: ID!
+    user_id: ID!
+    plan_id: ID!
+    status: String
+    price: Float
 }
 
 type Query {
     users: [User!]!
     user(id: ID!): User
+
+    plans: [Plan!]!
+    plan(id: ID!): Plan
+
+    subscriptions: [Subscription!]!
+    subscription(id: ID!): Subscription
 }
 
 type Mutation {
-    createUser(name: String!, email: String!): User
+    createUser(name: String!, email: String!, phone: String, age: Int): User
+    createPlan(slug: String!, price: Float!): Plan
+    createSubscription(user_id: ID!, plan_id: ID!, status: String!, price: Float!): Subscription
 }

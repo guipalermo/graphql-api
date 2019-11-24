@@ -2,7 +2,7 @@ const { GraphQLServer } = require('graphql-yoga');
 
 const path = require('path');
 
-const resolvers = require('./resolvers');
+const resolvers = require('./resolvers/Resolvers');
 
 const mongoose = require('mongoose');
 

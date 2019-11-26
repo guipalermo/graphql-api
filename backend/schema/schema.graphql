@@ -14,8 +14,8 @@ type Plan {
 
 type Subscription {
     id: ID!
-    user: [User]!
-    plan: [Plan]!
+    user: User!
+    plan: Plan!
     status: String
     price: Float
 }
@@ -34,5 +34,5 @@ type Query {
 type Mutation {
     createUser(name: String!, email: String!, phone: String, age: Int): User
     createPlan(slug: String!, price: Float!): Plan
-    createSubscription(user: User!, plan: Plan!, status: String!, price: Float!): Subscription
+    createSubscription(user: ID!, plan: ID!, status: String!, price: Float!): Subscription
 }

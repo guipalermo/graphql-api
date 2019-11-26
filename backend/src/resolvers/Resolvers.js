@@ -1,8 +1,13 @@
 const User = require('../models/User');
 const Plan = require('../models/Plan');
-const Subsctiption = require('../models/Subscription');
+const Subscription = require('../models/Subscription');
 
 module.exports = {
+    Subscription: {
+        user: (obj, args) => User.findById(obj.user),
+        plan: (obj, args) => Plan.findById(obj.plan)
+    },
+    
     Query: {
         users: () => User.find(),
         user: (_,{id}) => User.findById(id),
@@ -10,8 +15,8 @@ module.exports = {
         plans: () => Plan.find(),
         plan: (_,{id}) => Plan.findById(id),
 
-        subscriptions: () => Subsctiption.find(),
-        subscription: (_,{id}) => Subsctiption.findById(id),
+        subscriptions: () => Subscription.find(),
+        subscription: (_,{id}) => Subscription.findById(id),
     },
 
     Mutation:{
@@ -19,6 +24,6 @@ module.exports = {
         
         createPlan: (_,{slug, price}) => Plan.create({slug, price}),
 
-        createSubscription: (_,{user_id, plan_id, status, price}) => Subscription.create({user_id, plan_id, status, price})
+        createSubscription: (_,{user, plan, status, price}) => Subscription.create({user, plan, status, price})
     }
 }

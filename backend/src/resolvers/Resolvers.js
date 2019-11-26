@@ -20,10 +20,12 @@ module.exports = {
     },
 
     Mutation:{
-        createUser: (_,{name,email}) => User.create({name, email}),
+        createUser: (_,{name, email, phone, age}) => User.create({name, email, phone, age}),
+
+        updateUser: (_,{id , name, email, phone, age}) => User.findOneAndUpdate(id, {name, email, phone, age}),
         
         createPlan: (_,{slug, price}) => Plan.create({slug, price}),
 
         createSubscription: (_,{user, plan, status, price}) => Subscription.create({user, plan, status, price})
-    }
+    }   
 }

@@ -4,10 +4,12 @@ const path = require('path');
 
 const resolvers = require('./resolvers/Resolvers');
 
+require('dotenv/config');
+
 const mongoose = require('mongoose');
 
 mongoose.connect(
-    "mongodb://root:example@localhost?authMechanism=DEFAULT",
+    process.env.MONGOOSE_STRING_CONNECTION,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true

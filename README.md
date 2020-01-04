@@ -11,4 +11,6 @@ node src/server.js
 
 yarn add mongoose
 
+yarn add dotenv
+
 sudo docker-compose -f docker-compose.yml up
